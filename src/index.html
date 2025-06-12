@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dummer Flour Mills</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href ='./output.css' rel='stylesheet'>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slide {
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .slide-hidden {
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(40px);
+        }
+
+        .slide-active {
+            opacity: 1;
+            pointer-events: auto;
+            position: relative;
+            transform: translateY(0);
+        }
+
+        .main-info-sticky {
+            position: sticky;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 30;
+            background: transparent;
+            overflow: visible;
+        }
+
+        body.scroll-lock {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        .marquee-content {
+            animation: scroll-left 10s linear infinite;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(100%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Mobile menu styles */
+        .mobile-menu {
+            transition: all 0.3s ease;
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        .mobile-menu.open {
+            max-height: 1000px;
+        }
+
+        .hamburger {
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.open span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+    </style>
+</head>
+
+<body class="bg-[#f3ede4] font-serif">
+    <div class="fixed top-0 left-0 w-full bg-[#ede5d6] z-50">
+        <!-- Topbar -->
+        <div class="flex justify-between items-center bg-[#3e2d18] text-[#f3ede4] text-sm px-6 py-2">
+            <div class="flex items-center gap-2">
+                <!-- Clock SVG -->
+                <svg class="h-4 w-4 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <circle cx="12" cy="12" r="10" />
+                    <path d="M12 6v6l4 2" />
+                </svg>
+                Mon - Sat: 8:00am - 6:00pm
+            </div>
+            <div class="flex items-center gap-2">
+                <!-- Phone SVG -->
+                <svg class="h-4 w-4 inline-block mr-1" fill="none" stroke="currentColor" stroke-width="2"
+                    viewBox="0 0 24 24">
+                    <path d="M22 16.92V19a2 2 0 01-2 2A17.93 17.93 0 013 5a2 2 0 012-2h2.09a2 2 0 012 1.72
+                    c.13 1.12.34 2.22.62 3.28a2 2 0 01-.45 1.92l-1.27 1.27a16 16 0 007.28 7.28l1.27-1.27
+                    a2 2 0 011.92-.45c1.06.28 2.16.49 3.28.62a2 2 0 011.72 2z" />
+                </svg>
+                (128) 466-7890
+            </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="relative justify-center bg-[#ede5d6] z-10 hidden md:flex">
+
+            <div class="flex-1 flex justify-end items-center">
+                <nav class="flex gap-8 pr-60 pt-2">
+                    <a href="#"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- Home SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10" />
+                        </svg>
+                        Home
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- About SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-4M12 8h.01" />
+                        </svg>
+                        About
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- Products SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M3 9h18M9 21V9" />
+                        </svg>
+                        Products
+                    </a>
+                </nav>
+            </div>
+            <div
+                class="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 flex items-center z-20 pointer-events-none">
+                <div class="flex items-center bg-[#3e2d18] rounded-b-2xl px-8 pt-2 pb-3 shadow-lg pointer-events-auto">
+                    <img src="images/wheat-plant.webp" alt="" class="h-16 w-auto">
+                    <div class="flex flex-col items-start">
+                        <span class="text-4xl font-bold text-[#f3ede4] tracking-widest leading-none">DUMMER</span>
+                        <span class="text-xl font-semibold text-[#c6a15d] tracking-wide -mt-px2 leading-none">FLOUR
+                            MILLS</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex-1 flex justify-start items-center">
+                <nav class="flex gap-8 pl-60 pt-2">
+                    <a href="#"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- Quality SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24
+                            l5.46 4.73L5.82 21z" />
+                        </svg>
+                        Quality
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- News SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path d="M4 17h16M4 13h16M4 9h16M4 5h16" />
+                        </svg>
+                        News
+                    </a>
+                    <a href="contact-Us.html"
+                        class="flex items-center gap-2 hover:text-[#c6a15d] text-lg font-medium text-[#3e2d18] transition">
+                        <!-- Contact SVG -->
+                        <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path
+                                d="M21 10.5a8.38 8.38 0 01-7.5 8.37A8.38 8.38 0 013 10.5V5.75A2.75 2.75 0 015.75 3h12.5A2.75 2.75 0 0121 5.75z" />
+                            <path d="M8 7h.01M16 7h.01" />
+                        </svg>
+                        Contact
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div class="md:hidden bg-[#ede5d6] px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="images/wheat-plant.webp" alt="Dummer Flour Mills Logo" class="h-10 w-auto mr-2">
+                <div class="flex flex-col">
+                    <span class="text-xl font-bold text-[#3e2d18] tracking-wider leading-none">DUMMER</span>
+                    <span class="text-sm font-semibold text-[#c6a15d] tracking-wide leading-none">FLOUR MILLS</span>
+                </div>
+            </div>
+            <button id="mobile-menu-button" class="hamburger flex flex-col justify-between w-6 h-5 focus:outline-none">
+                <span class="block w-full h-0.5 bg-[#3e2d18] transition-all"></span>
+                <span class="block w-full h-0.5 bg-[#3e2d18] transition-all"></span>
+                <span class="block w-full h-0.5 bg-[#3e2d18] transition-all"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="mobile-menu bg-[#ede5d6] md:hidden">
+            <nav class="flex flex-col px-4 pb-4">
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium border-b border-[#d9d1c2]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M3 12l9-9 9 9M4 10v10a1 1 0 001 1h3a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1h3a1 1 0 001-1V10" />
+                    </svg>
+                    Home
+                </a>
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium border-b border-[#d9d1c2]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 16v-4M12 8h.01" />
+                    </svg>
+                    About
+                </a>
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium border-b border-[#d9d1c2]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18M9 21V9" />
+                    </svg>
+                    Products
+                </a>
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium border-b border-[#d9d1c2]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24 l5.46 4.73L5.82 21z" />
+                    </svg>
+                    Quality
+                </a>
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium border-b border-[#d9d1c2]">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M4 17h16M4 13h16M4 9h16M4 5h16" />
+                    </svg>
+                    News
+                </a>
+                <a href="#" class="flex items-center gap-3 py-3 text-[#3e2d18] font-medium">
+                    <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M21 10.5a8.38 8.38 0 01-7.5 8.37A8.38 8.38 0 013 10.5V5.75A2.75 2.75 0 015.75 3h12.5A2.75 2.75 0 0121 5.75z" />
+                        <path d="M8 7h.01M16 7h.01" />
+                    </svg>
+                    Contact
+                </a>
+            </nav>
+        </div>
+
+        <div class="h-4"></div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative">
+        <div class="relative w-full h-[800px] lg:h-[680px] flex items-center justify-start overflow-hidden">
+            <img src="images/bg-wheat.png" alt="Wheat"
+                class="absolute inset-0 w-full h-full object-cover object-right lg:object-center z-0"
+                draggable="false" />
+            <div class="relative z-10 max-w-2xl pl-8 py-12">
+                <h1 class="text-5xl lg:text-6xl font-bold text-[#f3ede4] mb-6 leading-tight drop-shadow">
+                    PREMIUM<br>QUALITY<br>FLOUR
+                </h1>
+                <a href="#main-info-section"
+                    class="inline-block bg-[#c6a15d] text-[#f3ede4] text-lg font-semibold px-8 py-3 rounded shadow hover:bg-[#a1814d] transition">
+                    LEARN MORE
+                </a>
+            </div>
+        </div>
+    </section>
+    <div class="h-4"></div>
+    <section class=" py-14 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <!-- Left: Vision and Mission -->
+                <div class="flex flex-col gap-10">
+                    <!-- Vision Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-9 border border-[#ede5d6]">
+                        <h2 class="text-3xl font-extrabold text-[#3e2d18] mb-3 font-serif">Our Products</h2>
+                        <p class="text-[#6e5c3a] text-lg leading-relaxed font-medium">
+                            Dummer Flour Mills produces premium quality flour using carefully selected grains and
+                            advanced
+                            milling technology. Our products ensure consistent freshness, nutrition, and superior baking
+                            results for homes and businesses alike.
+                        </p>
+                    </div>
+                    <!-- Mission Card -->
+                    <div class="bg-white rounded-2xl shadow-lg p-9 border border-[#ede5d6]">
+                        <h2 class="text-3xl font-extrabold text-[#3e2d18] mb-3 font-serif">Quality Assurance</h2>
+                        <p class="text-[#6e5c3a] text-lg leading-relaxed font-medium">
+                            At Dummer Flour Mills, quality assurance is at the core of everything we do. We implement
+                            rigorous testing and monitoring at every stage of production,
+                            from grain selection to final packaging.
+                        </p>
+                    </div>
+                </div>
+                <!-- Right: Images -->
+                <div class="flex flex-col gap-10">
+                    <!-- Top Right Image (large) -->
+                    <div class="rounded-2xl overflow-hidden shadow-lg border border-[#ede5d6] h-[240px]">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
+                            alt="Professional business meeting"
+                            class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                    </div>
+                    <!-- Bottom Right Images (2 small side-by-side) -->
+                    <div class="grid grid-cols-2 gap-10 mt-12">
+                        <div class="rounded-2xl overflow-hidden shadow-lg border border-[#ede5d6] h-[170px] ">
+                            <img src="https://images.unsplash.com/photo-1496247749665-49cf5b1022e9?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Team working with sticky notes"
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        </div>
+                        <div class="rounded-2xl overflow-hidden shadow-lg border border-[#ede5d6] h-[170px]">
+                            <img src="https://images.unsplash.com/photo-1468787737698-f5c03f0570dd?q=80&w=1930&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                alt="Team collaborating at a table"
+                                class="w-full h-full object-cover hover:scale-105 transition duration-500" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-12">
+                <div class="bg-[#3e2d18] rounded-2xl overflow-hidden shadow border border-[#ede5d6]">
+                    <div class="flex items-center gap-6 h-[62px] px-0 relative">
+                        <!-- Label -->
+                        <span
+                            class="flex-none font-bold text-lg font-serif uppercase px-8 border-r-2 border-white text-[#c6a15d] tracking-wider"
+                            style="letter-spacing: 0.08em; height: 62px; display: flex; align-items: center;">
+                            Current News
+                        </span>
+                        <!-- Marquee -->
+                        <div class="flex-1 overflow-hidden relative h-[24px] flex items-center pl-4">
+                            <div class="absolute left-0 top-0 w-10 h-full z-10 pointer-events-none"
+                                style="background: linear-gradient(to right, #3e2d18 60%, transparent 100%);"></div>
+                            <ul class="marquee-content flex gap-[60px] list-none p-0 m-0 min-w-full whitespace-nowrap">
+                                <li class="font-semibold text-base font-serif text-[#f3ede4] uppercase tracking-wide">
+                                    Dummer Flour Mills achieves ISO 22000 certification!
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main Info Scroll-Triggered Section -->
+    <section class="relative w-full h-[700px] flex items-center justify-center" id="main-info-section">
+        <!-- Slide images (backgrounds) -->
+        <div class="absolute inset-0 w-full h-full z-0 pointer-events-none">
+            <img id="slide-img-0" src="images/plant-welcome.png" alt="Welcome"
+                class="slide slide-active w-full h-full object-cover object-center" draggable="false" />
+            <img id="slide-img-1"
+                src="https://images.unsplash.com/photo-1547895749-888a559fc2a7?q=80&w=1964&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Mission" class="slide slide-hidden w-full h-full object-cover object-center" draggable="false" />
+            <img id="slide-img-2"
+                src="https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                alt="Sustainability" class="slide slide-hidden w-full h-full object-cover object-center"
+                draggable="false" />
+        </div>
+        <!-- Sticky Overlay in middle -->
+        <div class="main-info-sticky w-full flex">
+            <div
+                class="relative z-10 bg-[#eee8d8]/80 rounded-xl p-12 shadow-2xl max-w-xl w-full h-[330px] flex flex-col items-start justify-center">
+                <!-- Slides -->
+                <div class="slide slide-active" id="slide-0">
+                    <span
+                        class="uppercase tracking-[0.18em] text-[#222] text-xl md:text-2xl font-semibold mb-4 block">Welcome
+                        to</span>
+                    <span class="font-extrabold text-[#222] text-5xl md:text-7xl leading-[0.95] tracking-tight block"
+                        style="font-stretch: condensed;">
+                        DUMMER<br>FLOUR<br>MILLS
+                    </span>
+                </div>
+                <div class="slide slide-hidden" id="slide-1">
+                    <span
+                        class="uppercase tracking-[0.18em] text-[#222] text-xl md:text-2xl font-semibold mb-4 block">Our
+                        Mission</span>
+                    <span class="font-extrabold text-[#222] text-4xl md:text-6xl leading-[0.95] tracking-tight block">
+                        Quality & Tradition
+                    </span>
+                    <p class="mt-4 text-[#3e2d18] text-lg">We deliver premium flour using the finest grains and modern
+                        milling processes.</p>
+                </div>
+                <div class="slide slide-hidden" id="slide-2">
+                    <span
+                        class="uppercase tracking-[0.18em] text-[#222] text-xl md:text-2xl font-semibold mb-4 block">Sustainability</span>
+                    <span class="font-extrabold text-[#222] text-4xl md:text-6xl leading-[0.95] tracking-tight block">
+                        For Future Generations
+                    </span>
+                    <p class="mt-4 text-[#3e2d18] text-lg">Eco-friendly production and community support are at the
+                        heart of our work.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-[#ede5d6] border-t border-[#c6a15d] py-10">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col items-center">
+            <h2 class="text-2xl font-bold text-[#3e2d18] mb-8">Key Features</h2>
+            <div class="flex flex-wrap justify-center gap-16">
+                <!-- Certificates Feature Icon -->
+                <div class="group relative flex flex-col items-center text-center cursor-pointer" tabindex="0"
+                    aria-haspopup="dialog" aria-controls="certificates-popup">
+                    <div
+                        class="bg-[#f3ede4] rounded-full p-10 shadow-lg border border-[#c6a15d] hover:scale-110 transition">
+                        <svg class="h-20 w-20 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10" />
+                            <path d="M12 16v-8M8 12h8" />
+                        </svg>
+                    </div>
+                    <span class="mt-4 font-medium text-xl text-[#3e2d18]">Certificates</span>
+                    <div
+                        class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none bg-white border border-[#c6a15d] rounded px-4 py-2 shadow font-semibold text-[#3e2d18] text-sm transition z-30 whitespace-nowrap">
+                        View our official certifications
+                    </div>
+                </div>
+                <!-- Quality Control Feature Icon -->
+                <div class="group relative flex flex-col items-center text-center cursor-pointer" tabindex="0"
+                    aria-haspopup="dialog" aria-controls="quality-popup">
+                    <div
+                        class="bg-[#f3ede4] rounded-full p-10 shadow-lg border border-[#c6a15d] hover:scale-110 transition">
+                        <svg class="h-20 w-20 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                            <path d="M9 12.5l2 2 4-4" />
+                        </svg>
+                    </div>
+                    <span class="mt-4 font-medium text-xl text-[#3e2d18]">Quality Control</span>
+                    <div
+                        class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none bg-white border border-[#c6a15d] rounded px-4 py-2 shadow font-semibold text-[#3e2d18] text-sm transition z-30 whitespace-nowrap">
+                        Read about our strict quality assurance
+                    </div>
+                </div>
+                <!-- Modern Plant Feature Icon -->
+                <div class="group relative flex flex-col items-center text-center cursor-pointer" tabindex="0"
+                    aria-haspopup="dialog" aria-controls="plant-popup">
+                    <div
+                        class="bg-[#f3ede4] rounded-full p-10 shadow-lg border border-[#c6a15d] hover:scale-110 transition">
+                        <svg class="h-20 w-20 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <rect x="3" y="12" width="18" height="8" rx="2" />
+                            <path d="M7 12V7a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v5" />
+                            <rect x="9" y="16" width="2" height="2" />
+                            <rect x="13" y="16" width="2" height="2" />
+                        </svg>
+                    </div>
+                    <span class="mt-4 font-medium text-xl text-[#3e2d18]">Modern Plant</span>
+                    <div
+                        class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none bg-white border border-[#c6a15d] rounded px-4 py-2 shadow font-semibold text-[#3e2d18] text-sm transition z-30 whitespace-nowrap">
+                        Discover our advanced facilities
+                    </div>
+                </div>
+                <!-- Customer Service Feature Icon -->
+                <div class="group relative flex flex-col items-center text-center cursor-pointer" tabindex="0"
+                    aria-haspopup="dialog" aria-controls="service-popup">
+                    <div
+                        class="bg-[#f3ede4] rounded-full p-10 shadow-lg border border-[#c6a15d] hover:scale-110 transition">
+                        <svg class="h-20 w-20 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4" />
+                            <path d="M2 20v-2a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v2" />
+                        </svg>
+                    </div>
+                    <span class="mt-4 font-medium text-xl text-[#3e2d18]">Customer Service</span>
+                    <div
+                        class="absolute bottom-24 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 pointer-events-none bg-white border border-[#c6a15d] rounded px-4 py-2 shadow font-semibold text-[#3e2d18] text-sm transition z-30 whitespace-nowrap">
+                        Learn how we support our customers
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Popup Overlay -->
+        <div id="feature-popup-overlay" class="fixed inset-0 bg-black/40 z-50 hidden"></div>
+        <!-- Certificates Popup: Scrollable, static HTML, modular rows -->
+        <div id="certificates-popup"
+        <div id="modal" class="hidden fixed left-1/2 top-1/2 z-50 bg-white border border-[#c6a15d] rounded-xl shadow-xl p-2 md:p-10 w-[98vw] max-w-4xl -translate-x-1/2 -translate-y-1/2 flex-col">
+            <button onclick="closeFeaturePopup()"
+                class="absolute top-4 right-4 text-[#c6a15d] hover:text-[#3e2d18] text-4xl font-bold z-10">&times;</button>
+            <h2 class="text-3xl font-extrabold text-[#222] mb-4 text-center font-sans tracking-tight w-full">
+                CERTIFICATIONS
+            </h2>
+            <!-- Scrollable content area -->
+            <div class="flex flex-col gap-8 max-h-[70vh] overflow-y-auto pr-2">
+                <!-- Certificate 1 -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
+                    <img src="images/IAF.png" alt="FSSC 22000"
+                        class="rounded shadow w-36 md:w-48 object-contain bg-white md:mr-4 mb-2 md:mb-0">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-[#222] mb-1">FSSC 22000 Certified</h3>
+                        <p class="text-[#333] text-base">
+                            It is our moral and legal responsibility to produce safe products as a food manufacturing
+                            company. In accordance with our core values, we always strive to meet even higher standards
+                            by
+                            adopting FSSC 22000 food safety systems and certifications where appropriate. The FSSC (Food
+                            Safety System Certification) provides a benchmark for food safety standards and also
+                            recognized
+                            by 140 countries around the globe. The FSSC manages an accreditation process for the
+                            organizations seeking to get certification. We, Dummer Flour Mills, have the honor that we
+                            are
+                            certified by FSSC 22000-2013.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
+                    <img src="images/Afaq Environment.png" alt="FSSC 22000"
+                        class="rounded shadow w-36 md:w-48 object-contain bg-white md:mr-4 mb-2 md:mb-0">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-[#222] mb-1">FSSC 22000 Certified</h3>
+                        <p class="text-[#333] text-base">
+                            It is our moral and legal responsibility to produce safe products as a food manufacturing
+                            company. In accordance with our core values, we always strive to meet even higher standards
+                            by
+                            adopting FSSC 22000 food safety systems and certifications where appropriate. The FSSC (Food
+                            Safety System Certification) provides a benchmark for food safety standards and also
+                            recognized
+                            by 140 countries around the globe. The FSSC manages an accreditation process for the
+                            organizations seeking to get certification. We, Dummer Flour Mills, have the honor that we
+                            are
+                            certified by FSSC 22000-2013.
+                        </p>
+                    </div>
+                </div>
+                <!-- Certificate 2 -->
+                <div class="flex flex-col md:flex-row items-center md:items-start gap-6 md:gap-10">
+                    <img src="images/sgs.png" alt="SGS System"
+                        class="rounded shadow w-36 md:w-48 object-contain bg-white md:mr-4 mb-2 md:mb-0">
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-[#222] mb-1">SGS System Certification</h3>
+                        <p class="text-[#333] text-base">
+                            Our process of making flour is also inspected and verified by SGS (Société Générale de
+                            Surveillance). SGS is the world’s leading inspection, verification, testing, and
+                            Certification
+                            Company. They are recognized as the global benchmark for quality and integrity. Recognition
+                            from
+                            that institute is a great achievement for us. It is also our competitive edge in all other
+                            flour
+                            producers.
+                        </p>
+                    </div>
+                </div>
+                <!-- Add more certificates here as needed -->
+            </div>
+        </div>
+        <!-- Quality Popup -->
+        <div id="quality-popup"
+            class="fixed left-1/2 top-1/2 z-50 bg-white border border-[#c6a15d] rounded-xl shadow-xl p-8 w-[95vw] max-w-lg -translate-x-1/2 -translate-y-1/2 hidden">
+            <button onclick="closeFeaturePopup()"
+                class="absolute top-3 right-3 text-[#c6a15d] hover:text-[#3e2d18] text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-[#3e2d18] mb-3">Quality Control</h3>
+            <p class="text-[#6e5c3a] mb-2">
+                Every batch of flour undergoes rigorous inspection at each stage—from grain selection to packaging. Our
+                labs
+                use modern equipment for microbiological and chemical analysis, ensuring only the finest quality reaches
+                our
+                customers.
+            </p>
+            <img src="quality-control.jpg" alt="Quality Control" class="rounded shadow mt-2 w-40">
+        </div>
+        <!-- Modern Plant Popup -->
+        <div id="plant-popup"
+            class="fixed left-1/2 top-1/2 z-50 bg-white border border-[#c6a15d] rounded-xl shadow-xl p-8 w-[95vw] max-w-lg -translate-x-1/2 -translate-y-1/2 hidden">
+            <button onclick="closeFeaturePopup()"
+                class="absolute top-3 right-3 text-[#c6a15d] hover:text-[#3e2d18] text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-[#3e2d18] mb-3">Modern Plant</h3>
+            <p class="text-[#6e5c3a] mb-2">
+                Our state-of-the-art milling plant uses advanced technology for efficient, hygienic, and eco-friendly
+                production. Automation and monitoring systems ensure every sack of flour is consistently fresh and
+                nutritious.
+            </p>
+            <img src="modern-plant.jpg" alt="Modern Plant" class="rounded shadow mt-2 w-40">
+        </div>
+        <!-- Customer Service Popup -->
+        <div id="service-popup"
+            class="fixed left-1/2 top-1/2 z-50 bg-white border border-[#c6a15d] rounded-xl shadow-xl p-8 w-[95vw] max-w-lg -translate-x-1/2 -translate-y-1/2 hidden">
+            <button onclick="closeFeaturePopup()"
+                class="absolute top-3 right-3 text-[#c6a15d] hover:text-[#3e2d18] text-3xl">&times;</button>
+            <h3 class="text-2xl font-bold text-[#3e2d18] mb-3">Customer Service</h3>
+            <p class="text-[#6e5c3a] mb-2">
+                Our dedicated support team is available to answer questions, resolve issues, and ensure customer
+                satisfaction. We value your feedback and strive to continually improve our services.
+            </p>
+            <img src="images/sgs.png" alt="Customer Service" class="rounded shadow mt-2 w-40">
+        </div>
+    </section>
+    <section class="relative bg-[#ede5d6] py-20 border-t border-[#c6a15d] overflow-hidden">
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="flex flex-col items-center mb-14">
+                <h2
+                    class="text-4xl md:text-5xl font-extrabold text-[#3e2d18] tracking-tight mb-2 font-serif text-center">
+                    Our Modern Milling Process</h2>
+                <div class="w-24 border-b-4 border-[#c6a15d] mb-3"></div>
+                <p class="text-[#6e5c3a] text-lg md:text-xl text-center max-w-2xl">
+                    Where tradition meets technology. Explore each step by clicking to see the transformation in action.
+                </p>
+            </div>
+            <div class="flex flex-col md:flex-row gap-12">
+                <!-- Left: Dynamic image area -->
+                <div class="flex-1 flex items-center justify-center">
+                    <div id="process-image-holder"
+                        class="w-[320px] h-[320px] md:w-[380px] md:h-[380px] bg-[#f3ede4] rounded-3xl shadow-xl border-2 border-[#c6a15d] flex items-center justify-center overflow-hidden transition-all duration-300">
+                        <!-- Images are swapped here via JS; default is step 1 -->
+                        <img id="process-image" src="process-cleaning.svg" alt="Cleaning"
+                            class=" object-contain transition-all duration-300" />
+                    </div>
+                </div>
+                <!-- Right: Steps List -->
+                <div class="flex-[1.5] flex flex-col gap-6 w-full">
+                    <button type="button" data-step="0"
+                        class="process-step group text-left flex items-start gap-5 bg-white rounded-2xl shadow-xl border-l-8 border-[#c6a15d] p-6 transition hover:border-[#3e2d18] ring-[#c6a15d] ring-2 ring-opacity-0 focus:ring-opacity-70 outline-none">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="bg-[#f3ede4] border-2 border-[#c6a15d] rounded-full h-14 w-14 flex items-center justify-center shadow group-hover:scale-110 transition">
+                                <svg class="h-7 w-7 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M3 21l9-18 9 18" />
+                                    <path d="M4 17h16" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#3e2d18] font-serif mb-1">1. Precision Cleaning</h3>
+                            <p class="text-[#6e5c3a] text-base">
+                                Automated sorters and air-jet systems remove all foreign materials, dust, and stones,
+                                ensuring only premium wheat enters our process.
+                            </p>
+                        </div>
+                    </button>
+                    <button type="button" data-step="1"
+                        class="process-step group text-left flex items-start gap-5 bg-white rounded-2xl shadow-xl border-l-8 border-[#c6a15d] p-6 transition hover:border-[#3e2d18] ring-[#c6a15d] ring-2 ring-opacity-0 focus:ring-opacity-70 outline-none">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="bg-[#f3ede4] border-2 border-[#c6a15d] rounded-full h-14 w-14 flex items-center justify-center shadow group-hover:scale-110 transition">
+                                <svg class="h-7 w-7 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M12 2C12 2 7 9.5 7 13.5A5 5 0 0 0 17 13.5C17 9.5 12 2 12 2Z" />
+                                    <ellipse cx="12" cy="17" rx="5" ry="3" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#3e2d18] font-serif mb-1">2. Conditioning & Resting</h3>
+                            <p class="text-[#6e5c3a] text-base">
+                                Moisture is precisely added and the wheat is rested in temperature-controlled silos,
+                                unlocking optimal milling performance.
+                            </p>
+                        </div>
+                    </button>
+                    <button type="button" data-step="2"
+                        class="process-step group text-left flex items-start gap-5 bg-white rounded-2xl shadow-xl border-l-8 border-[#c6a15d] p-6 transition hover:border-[#3e2d18] ring-[#c6a15d] ring-2 ring-opacity-0 focus:ring-opacity-70 outline-none">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="bg-[#f3ede4] border-2 border-[#c6a15d] rounded-full h-14 w-14 flex items-center justify-center shadow group-hover:scale-110 transition">
+                                <svg class="h-7 w-7 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <circle cx="12" cy="12" r="9" />
+                                    <circle cx="12" cy="12" r="2.5" />
+                                    <path d="M12 2.5v19M2.5 12h19" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#3e2d18] font-serif mb-1">3. Gentle Grinding</h3>
+                            <p class="text-[#6e5c3a] text-base">
+                                Multi-stage roller mills gently break down the wheat, separating bran, germ, and
+                                endosperm with minimal heat for nutrient retention.
+                            </p>
+                        </div>
+                    </button>
+                    <button type="button" data-step="3"
+                        class="process-step group text-left flex items-start gap-5 bg-white rounded-2xl shadow-xl border-l-8 border-[#c6a15d] p-6 transition hover:border-[#3e2d18] ring-[#c6a15d] ring-2 ring-opacity-0 focus:ring-opacity-70 outline-none">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="bg-[#f3ede4] border-2 border-[#c6a15d] rounded-full h-14 w-14 flex items-center justify-center shadow group-hover:scale-110 transition">
+                                <svg class="h-7 w-7 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <rect x="4" y="8" width="16" height="8" rx="4" />
+                                    <circle cx="8" cy="12" r="1" />
+                                    <circle cx="12" cy="12" r="1" />
+                                    <circle cx="16" cy="12" r="1" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#3e2d18] font-serif mb-1">4. Ultra-Fine Sifting</h3>
+                            <p class="text-[#6e5c3a] text-base">
+                                High-frequency sifters separate the finest flour from coarser particles, guaranteeing
+                                uniformity and perfect baking results.
+                            </p>
+                        </div>
+                    </button>
+                    <button type="button" data-step="4"
+                        class="process-step group text-left flex items-start gap-5 bg-white rounded-2xl shadow-xl border-l-8 border-[#c6a15d] p-6 transition hover:border-[#3e2d18] ring-[#c6a15d] ring-2 ring-opacity-0 focus:ring-opacity-70 outline-none">
+                        <div class="flex-shrink-0">
+                            <div
+                                class="bg-[#f3ede4] border-2 border-[#c6a15d] rounded-full h-14 w-14 flex items-center justify-center shadow group-hover:scale-110 transition">
+                                <svg class="h-7 w-7 text-[#c6a15d]" fill="none" stroke="currentColor" stroke-width="2"
+                                    viewBox="0 0 24 24">
+                                    <path d="M7 4h10l1 8v6a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-6l1-8z" />
+                                    <path d="M12 16v-4" />
+                                    <path d="M9 8h6" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-[#3e2d18] font-serif mb-1">5. Smart Packing</h3>
+                            <p class="text-[#6e5c3a] text-base">
+                                Automated, touchless packing lines seal freshness in high-barrier bags. Each batch is
+                                coded for traceability and quality assurance.
+                            </p>
+                        </div>
+                    </button>
+                </div>
+            </div>
+            <!-- Optional CTA -->
+            <div class="flex justify-center mt-16">
+                <a href="#contact"
+                    class="bg-[#c6a15d] hover:bg-[#a78138] text-white font-bold text-lg px-8 py-3 rounded-full shadow-md transition">See
+                    Our Quality in Action</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#3e2d18] text-[#f3ede4] py-10 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <img src="images/wheat-plant.webp" alt="Dummer Flour Mills Logo" class="h-12 w-auto mr-3">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold tracking-wider leading-none">DUMMER</span>
+                        <span class="text-lg font-semibold text-[#c6a15d] tracking-wide leading-none">FLOUR MILLS</span>
+                    </div>
+                </div>
+                <p class="text-sm sm:text-base opacity-80">
+                    Premium quality flour producers since 1952. Delivering tradition and innovation in every bag.
+                </p>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4 border-b border-[#c6a15d] pb-2">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="hover:text-[#c6a15d] transition">Home</a></li>
+                    <li><a href="#" class="hover:text-[#c6a15d] transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-[#c6a15d] transition">Our Products</a></li>
+                    <li><a href="#" class="hover:text-[#c6a15d] transition">Quality Standards</a></li>
+                    <li><a href="#" class="hover:text-[#c6a15d] transition">Contact Us</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-lg font-bold mb-4 border-b border-[#c6a15d] pb-2">Contact Info</h3>
+                <address class="not-italic">
+                    <p class="flex items-center mb-2">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        123 Mill Street, Flourville, FL 12345
+                    </p>
+                    <p class="flex items-center mb-2">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                        </svg>
+                        (128) 466-7890
+                    </p>
+                    <p class="flex items-center">
+                        <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        info@dummerflourmills.com
+                    </p>
+                </address>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-[#5a4a30] text-center text-sm opacity-70">
+            <p>&copy; 2023 Dummer Flour Mills. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- CONFIG ---
+        const NUM_SLIDES = 3;
+        const CENTER_THRESHOLD = 2; // px: how close to viewport center before activating, for initial trigger
+
+        // --- State ---
+        let currentSlide = 0;
+        let effectActive = false; // true when scroll-jack is running
+        let effectUsed = false;   // set to true after last slide, never re-activates
+        let isAnimating = false;
+
+        // --- Elements ---
+        const mainInfoSection = document.getElementById('main-info-section');
+        const slideImgs = Array.from({ length: NUM_SLIDES }, (_, i) => document.getElementById('slide-img-' + i));
+        const slideTexts = Array.from({ length: NUM_SLIDES }, (_, i) => document.getElementById('slide-' + i));
+        const stickyBox = mainInfoSection.querySelector('.main-info-sticky');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        // --- Utility ---
+        function showSlide(n) {
+            for (let i = 0; i < NUM_SLIDES; ++i) {
+                slideImgs[i].classList.toggle('slide-active', i === n);
+                slideImgs[i].classList.toggle('slide-hidden', i !== n);
+                slideTexts[i].classList.toggle('slide-active', i === n);
+                slideTexts[i].classList.toggle('slide-hidden', i !== n);
+            }
+        }
+
+        // --- Activation: when sticky card is centered, and not already used ---
+        function isStickyCentered() {
+            const rect = stickyBox.getBoundingClientRect();
+            const boxCenter = rect.top + rect.height / 2;
+            const windowCenter = window.innerHeight / 2;
+            return Math.abs(boxCenter - windowCenter) < CENTER_THRESHOLD;
+        }
+
+        function activateScrollJack() {
+            effectActive = true;
+            document.body.classList.add('scroll-lock');
+        }
+
+        function deactivateScrollJack() {
+            effectActive = false;
+            effectUsed = true;
+            document.body.classList.remove('scroll-lock');
+        }
+
+        function checkForActivation() {
+            if (effectUsed || effectActive) return;
+            if (isStickyCentered()) activateScrollJack();
+        }
+
+        function handleScrollJackEvent(e) {
+            if (!effectActive) return; // let normal scroll happen if not active
+            if (isAnimating) return;
+            let direction = 0;
+
+            // Detect direction
+            if (e.type === 'wheel') {
+                direction = e.deltaY > 0 ? 1 : -1;
+            } else if (e.type === 'keydown') {
+                if (["ArrowDown", "PageDown", " "].includes(e.key)) direction = 1;
+                if (["ArrowUp", "PageUp"].includes(e.key)) direction = -1;
+                if (["Tab"].includes(e.key)) { e.preventDefault(); return; }
+            } else if (e.type === 'touchstart') {
+                window._touchStartY = e.touches[0].clientY;
+                return;
+            } else if (e.type === 'touchend') {
+                if (window._touchStartY !== undefined) {
+                    let delta = window._touchStartY - e.changedTouches[0].clientY;
+                    if (Math.abs(delta) > 40) direction = delta > 0 ? 1 : -1;
+                }
+            }
+
+            // Only handle if direction is determined
+            if (direction !== 0) {
+                if (direction > 0 && currentSlide < NUM_SLIDES - 1) {
+                    isAnimating = true;
+                    currentSlide += 1;
+                    showSlide(currentSlide);
+                    setTimeout(() => { isAnimating = false; }, 650);
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else if (direction < 0 && currentSlide > 0) {
+                    isAnimating = true;
+                    currentSlide -= 1;
+                    showSlide(currentSlide);
+                    setTimeout(() => { isAnimating = false; }, 650);
+                    e.preventDefault();
+                    e.stopPropagation();
+                } else if (direction > 0 && currentSlide === NUM_SLIDES - 1) {
+                    // Finished last slide: allow normal scroll again
+                    deactivateScrollJack();
+                    // Let this scroll event go through (page continues down)
+                } else if (direction < 0 && currentSlide === 0) {
+                    deactivateScrollJack();
+                } else {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            }
+        }
+
+        // Mobile menu toggle
+        mobileMenuButton.addEventListener('click', function () {
+            this.classList.toggle('open');
+            mobileMenu.classList.toggle('open');
+            document.body.classList.toggle('scroll-lock');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', function () {
+                mobileMenuButton.classList.remove('open');
+                mobileMenu.classList.remove('open');
+                document.body.classList.remove('scroll-lock');
+            });
+        });
+
+        window.addEventListener('scroll', checkForActivation, { passive: true });
+        window.addEventListener('wheel', handleScrollJackEvent, { passive: false });
+        window.addEventListener('keydown', handleScrollJackEvent, { passive: false });
+        window.addEventListener('touchstart', handleScrollJackEvent, { passive: false });
+        window.addEventListener('touchend', handleScrollJackEvent, { passive: false });
+
+        showSlide(0);
+        //  POPUP BELOW 
+        function closeFeaturePopup() {
+            document.getElementById('feature-popup-overlay').classList.add('hidden');
+            document.querySelectorAll('[id$="-popup"]').forEach(el => el.classList.add('hidden'));
+            document.body.classList.remove('scroll-lock');
+        }
+        function openFeaturePopup(id) {
+            document.getElementById('feature-popup-overlay').classList.remove('hidden');
+            document.getElementById(id).classList.remove('hidden');
+            document.body.classList.add('scroll-lock');
+        }
+        document.addEventListener('DOMContentLoaded', () => {
+            const map = {
+                0: 'certificates-popup',
+                1: 'quality-popup',
+                2: 'plant-popup',
+                3: 'service-popup'
+            };
+            document.querySelectorAll('section [aria-haspopup="dialog"]').forEach((el, i) => {
+                el.addEventListener('click', () => openFeaturePopup(map[i]));
+                el.addEventListener('keydown', e => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        openFeaturePopup(map[i]);
+                        e.preventDefault();
+                    }
+                });
+            });
+            document.getElementById('feature-popup-overlay').addEventListener('click', closeFeaturePopup);
+            document.addEventListener('keydown', e => {
+                if (!document.getElementById('feature-popup-overlay').classList.contains('hidden') && e.key === 'Escape') {
+                    closeFeaturePopup();
+                }
+            });
+        });
+        const stepImages = [
+            "images/Step1.png",    // Step 1 image
+            "images/Step2.png",// Step 2 image
+            "images/Step3.png",    // Step 3 image
+            "images/Step4.png",     // Step 4 image
+            "images/Step5.png",     // Step 5 image
+        ];
+        const stepAlts = [
+            "Cleaning wheat grains",
+            "Conditioning and resting wheat",
+            "Grinding wheat in rollers",
+            "Sifting flour",
+            "Packing fresh flour"
+        ];
+        // Add .active styling to selected step
+        function setActiveStep(idx) {
+            document.querySelectorAll('.process-step').forEach((btn, i) => {
+                if (i === idx) {
+                    btn.classList.add('ring-opacity-70');
+                    btn.classList.add('border-[#3e2d18]');
+                    btn.classList.remove('border-[#c6a15d]');
+                } else {
+                    btn.classList.remove('ring-opacity-70');
+                    btn.classList.remove('border-[#3e2d18]');
+                    btn.classList.add('border-[#c6a15d]');
+                }
+            });
+        }
+        // Set image and highlight step
+        function showStep(idx) {
+            const img = document.getElementById('process-image');
+            img.src = stepImages[idx];
+            img.alt = stepAlts[idx];
+            setActiveStep(idx);
+        }
+        // Click or keyboard navigation
+        document.addEventListener('DOMContentLoaded', () => {
+            const steps = document.querySelectorAll('.process-step');
+            steps.forEach((step, idx) => {
+                step.addEventListener('click', () => showStep(idx));
+                step.addEventListener('focus', () => showStep(idx));
+                // Optional: hover also changes image (for desktop)
+                step.addEventListener('mouseenter', () => showStep(idx));
+            });
+            // Default: show first step
+            showStep(0);
+        });
+
+    </script>
+</body>
+
+</html>
