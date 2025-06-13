@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Our Products | Dummer Flour Mills</title>
+    <link rel="stylesheet" href="output.css" />
+    <!-- For quick testing, you can uncomment the Tailwind CDN below -->
+<script src="https://cdn.tailwindcss.com"></script> 
+    <style>
+        .modal-fade {
+            animation: modalFadeIn 0.35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-stone-50 text-stone-800 font-sans">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-yellow-100 via-yellow-50 to-stone-50 border-b border-yellow-200 shadow-sm">
+        <div class="max-w-4xl mx-auto px-4 py-12 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-900 tracking-wide uppercase mb-2">Dummer Flour
+                Mills</h1>
+            <p class="text-lg md:text-xl text-yellow-800 mb-1">Premium Quality Since 1990</p>
+            <div class="w-24 h-1 bg-yellow-600 mx-auto rounded my-4"></div>
+            <p class="max-w-2xl mx-auto text-stone-600">Crafting wholesome flours for generations. Discover the heart of
+                your kitchen.</p>
+        </div>
+    </header>
+
+    <!-- Products Grid -->
+    <main class="max-w-6xl mx-auto px-4 py-16">
+        <h2 class="text-2xl md:text-3xl font-bold text-yellow-900 mb-10 text-center uppercase tracking-tight">Our
+            Signature Products</h2>
+        <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+            <!-- Product Card 1 -->
+            <button onclick="showModal(0)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Atta"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Atta</h3>
+                <p class="text-sm text-stone-600 text-center">Traditional whole wheat flour for soft, nutritious rotis.
+                </p>
+            </button>
+            <!-- Product Card 2 -->
+            <button onclick="showModal(1)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Maida"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Maida</h3>
+                <p class="text-sm text-stone-600 text-center">Refined flour for baking, pastries, and confections.</p>
+            </button>
+            <!-- Product Card 3 -->
+            <button onclick="showModal(2)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Suji"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Suji</h3>
+                <p class="text-sm text-stone-600 text-center">Golden semolina for sweets, upma, and more.</p>
+            </button>
+            <!-- Product Card 4 -->
+            <button onclick="showModal(3)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Bran"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Bran</h3>
+                <p class="text-sm text-stone-600 text-center">Nutritious wheat bran for wellness and high-fiber diets.
+                </p>
+            </button>
+            <!-- Product Card 5 -->
+            <button onclick="showModal(4)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Multigrain"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Multigrain</h3>
+                <p class="text-sm text-stone-600 text-center">Blend of select grains for balanced nutrition and taste.
+                </p>
+            </button>
+            <!-- Product Card 6 -->
+            <button onclick="showModal(5)"
+                class="group bg-white rounded-2xl shadow-md hover:shadow-xl transition border border-yellow-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 p-6 flex flex-col items-center relative">
+                <img src="https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+                    alt="Dummer Besan"
+                    class="rounded-xl mb-4 w-40 h-40 object-cover shadow-sm border-2 border-yellow-100 group-hover:border-yellow-300 transition" />
+                <h3 class="text-lg font-bold text-yellow-900 mb-1">Dummer Besan</h3>
+                <p class="text-sm text-stone-600 text-center">Finest gram flour for snacks and desserts.</p>
+            </button>
+        </div>
+    </main>
+
+    <!-- Modal -->
+    <div id="productModal" class="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50 hidden">
+        <div class="modal-fade bg-white rounded-2xl p-8 max-w-md w-full shadow-2xl relative border-2 border-yellow-400">
+            <button onclick="closeModal()"
+                class="absolute top-3 right-4 text-yellow-700 text-2xl font-bold hover:text-yellow-900">&times;</button>
+            <div id="modalContent" class="text-center"></div>
+        </div>
+    </div>
+
+    <!-- Call to Action -->
+    <section class="max-w-3xl mx-auto px-4 pb-16">
+        <div
+            class="bg-gradient-to-r from-yellow-600 to-yellow-400 rounded-2xl shadow-lg py-10 px-6 flex flex-col items-center mt-8">
+            <h3 class="text-xl md:text-2xl font-bold text-white mb-3 drop-shadow">Bulk Orders & Custom Blends</h3>
+            <p class="text-white/90 text-center text-base mb-6 max-w-xl">
+                For business partnerships, custom flour blends or wholesale pricing, reach out and let’s create
+                something special together!
+            </p>
+            <a href="contact.html"
+                class="bg-white text-yellow-900 font-semibold px-8 py-3 rounded-lg shadow hover:bg-yellow-50 hover:text-yellow-700 transition">
+                Contact Us
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Product Details Data
+        const productDetails = [
+            {
+                name: "Dummer Atta",
+                since: "1990",
+                how: "Stone-ground from premium local wheat, preserving all parts of the grain. Carefully cleaned, slow-milled, and packed for freshness.",
+                desc: "Soft, nutritious, and trusted for generations.",
+                features: [
+                    "Stone-ground for full nutrition",
+                    "Perfect for soft rotis & chapatis",
+                    "No additives or preservatives"
+                ]
+            },
+            {
+                name: "Dummer Maida",
+                since: "1994",
+                how: "Refined using a double-milling process. Only the central endosperm is used, producing an ultra-fine, white flour for bakery and confectionery use.",
+                desc: "Preferred by professional bakers for cakes, pastries, and naan.",
+                features: [
+                    "Superfine texture for baking",
+                    "Uniform results every time",
+                    "Hygienic processing and packaging"
+                ]
+            },
+            {
+                name: "Dummer Suji",
+                since: "1992",
+                how: "Produced through careful sifting during wheat milling, our suji is golden and granular, ideal for both sweet and savory classics.",
+                desc: "Essential for halwa, upma, and Indian delicacies.",
+                features: [
+                    "100% pure wheat semolina",
+                    "Natural golden color",
+                    "Versatile for sweets & savories"
+                ]
+            },
+            {
+                name: "Dummer Bran",
+                since: "1995",
+                how: "Extracted from the outer wheat layer during milling, our bran is packed with fiber and nutrients to enhance health-focused recipes.",
+                desc: "A health booster for cereals, mixes, and dough.",
+                features: [
+                    "Rich in fiber",
+                    "Supports digestive health",
+                    "Great for mixing in doughs or cereals"
+                ]
+            },
+            {
+                name: "Dummer Multigrain",
+                since: "2010",
+                how: "A blend of wheat, oats, barley, maize, and more, ground together for a balanced nutritional profile and superb taste.",
+                desc: "For health-conscious families seeking variety and nutrition.",
+                features: [
+                    "Contains 5+ whole grains",
+                    "Supports heart & gut health",
+                    "Perfect for rotis & breads"
+                ]
+            },
+            {
+                name: "Dummer Besan",
+                since: "2000",
+                how: "Finely ground from 100% pure, high-quality chana dal in ultra-hygienic conditions for purity and a silky, fresh texture.",
+                desc: "Ideal for pakoras, laddoos, and Indian snacks.",
+                features: [
+                    "Silky texture and fresh aroma",
+                    "High protein content",
+                    "No artificial color or flavor"
+                ]
+            }
+        ];
+
+        function showModal(index) {
+            const product = productDetails[index];
+            document.getElementById('modalContent').innerHTML = `
+        <h2 class="text-2xl font-bold text-yellow-900 mb-1">${product.name}</h2>
+        <p class="italic text-yellow-700 mb-2">Introduced: ${product.since}</p>
+        <p class="text-stone-700 mb-3">${product.desc}</p>
+        <h3 class="text-lg font-semibold text-yellow-800 mb-1">How It's Made</h3>
+        <p class="text-stone-600 mb-3">${product.how}</p>
+        <h4 class="font-semibold text-stone-800 mb-1">Key Features</h4>
+        <ul class="list-disc list-inside text-stone-700 text-left mb-2 mx-auto max-w-xs">
+          ${product.features.map(f => `<li>${f}</li>`).join('')}
+        </ul>
+      `;
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').classList.add('hidden');
+        }
+
+        document.getElementById('productModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+</body>
+
+</html>
