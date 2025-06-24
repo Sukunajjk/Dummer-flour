@@ -1,443 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <title>About Us | Dummer Flour Mills</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Heritage | Dummer Flour Mills</title>
+    <!-- TailwindCSS & Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;700&family=Montserrat:wght@300;400;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        dummercream: "#f3ede4",
+                        dummerbeige: "#ede5d6",
+                        dummerbrown: "#3e2d18",
+                        dummergold: "#c6a15d",
+                        dummerblue: "#2563eb"
+                    },
+                    fontFamily: {
+                        serif: ['EB Garamond', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    },
+                    boxShadow: {
+                        card: "0 6px 32px 0 rgba(62,45,24,0.10)"
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        .heritage-hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(circle, transparent 60%, rgba(58, 46, 36, 0.7));
+        html,
+        body {
+            margin: 0;
+            padding: 0;
         }
-        .timeline::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(to bottom, 
-                transparent 0%, 
-                #8C6A4F 20%, 
-                #8C6A4F 80%, 
-                transparent 100%);
+
+        .glass {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 6px 32px 0 rgba(62, 45, 24, 0.06);
         }
-        .timeline-dot {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: #8C6A4F;
-            border: 3px solid #F5EFE0;
+
+        .section-border {
+            border: 1.5px solid #ede5d6;
         }
-        .team-card:hover .team-image {
-            transform: scale(1.05);
-            filter: grayscale(0);
+
+        .about-curve {
+            border-radius: 1.8rem;
+            overflow: hidden;
+            box-shadow: 0 6px 32px 0 rgba(62, 45, 24, 0.09);
         }
-        .mill-diagram {
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M20,20 L80,20 L80,80 L20,80 Z" fill="none" stroke="%238C6A4F" stroke-width="0.5"/><path d="M30,30 L70,30 L70,70 L30,70 Z" fill="none" stroke="%238C6A4F" stroke-width="0.5"/><path d="M40,40 L60,40 L60,60 L40,60 Z" fill="none" stroke="%238C6A4F" stroke-width="0.5"/></svg>');
-            background-size: 100px 100px;
-        }
-        .grain-pattern {
-            background-image: url('https://www.transparenttextures.com/patterns/rice-paper-3.png');
+
+        .icon-bg {
+            background: linear-gradient(120deg, #c6a15d22 60%, #ede5d6 100%);
         }
     </style>
 </head>
-<body class="font-sans text-gray-800 bg-amber-50">
-    
-    <!-- Cinematic Hero -->
-    <header class="heritage-hero relative h-screen max-h-[800px] overflow-hidden flex items-center justify-center">
-        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1590856029826-c7a1a2c306e5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center"></div>
-        <div class="relative z-10 text-center px-6 text-amber-50">
-            <div class="mb-8">
-                <svg class="w-20 h-20 mx-auto fill-current text-amber-200" viewBox="0 0 100 100">
-                    <path d="M50,10 L70,30 L70,70 L50,90 L30,70 L30,30 Z M50,30 L60,40 L60,60 L50,70 L40,60 L40,40 Z"/>
-                </svg>
+
+<body class="bg-dummercream font-sans text-dummerbrown min-h-screen">
+
+   
+    <main class="pt-32 pb-0 bg-[#f3ede4] min-h-screen">
+
+        <!-- HERO -->
+        <section class="max-w-7xl mx-auto px-4 pt-2 pb-12">
+            <div
+                class="bg-white rounded-3xl shadow-card py-12 px-4 md:px-16 flex flex-col items-center text-center relative">
+                <div class="mb-7 text-lg font-medium font-serif text-dummergold">About Us</div>
+                <h1 class="text-4xl md:text-5xl font-extrabold font-serif mb-5 tracking-tight">
+                    Providing <span class="text-dummergold">Quality Flour</span> &amp; Milling
+                </h1>
+                <p class="text-lg text-dummerbrown/80 max-w-2xl mx-auto mb-8">
+                    Where we provide personalized and comprehensive flour solutions to help you bake your best. Trusted
+                    by thousands of customers and businesses for over 70 years.
+                </p>
+                <div class="flex flex-col md:flex-row gap-8 mt-4">
+                    <div class="flex flex-col items-center text-center">
+                        <span class="font-bold text-3xl text-dummergold">70+</span>
+                        <span class="font-medium text-dummerbrown/80 mt-1">Years of Excellence</span>
+                    </div>
+                    <div class="flex flex-col items-center text-center">
+                        <span class="font-bold text-3xl text-dummergold">2000+</span>
+                        <span class="font-medium text-dummerbrown/80 mt-1">Happy Clients</span>
+                    </div>
+                </div>
             </div>
-            <h1 class="font-serif text-5xl md:text-7xl font-light tracking-wider mb-6">
-                <span class="block">Our Milling</span>
-                <span class="block">Heritage</span>
-            </h1>
-            <div class="w-32 h-px bg-amber-200 mx-auto mb-8"></div>
-            <p class="text-xl max-w-2xl mx-auto">
-                Three generations of craftsmanship in every grain
+        </section>
+
+        <!-- INTRO / MISSION -->
+        <section class="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 px-4 py-10 items-center">
+            <div>
+                <div
+                    class="mb-3 px-4 py-1 inline-block rounded-full bg-dummergold/10 text-dummergold font-semibold text-sm">
+                    Our Mission</div>
+                <h2 class="text-2xl md:text-3xl font-serif font-extrabold mb-4">Providing Quality Flour Since 1952</h2>
+                <p class="text-dummerbrown/80 text-lg mb-6">
+                    At Dummer Flour Mills, we're dedicated to delivering exceptional flour and raising the standard for
+                    baking and food production. Our mission is to provide premium, safe, and innovative products to
+                    every customer, guided by values of quality, integrity, and community.
+                </p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="rounded-lg px-6 py-3 bg-dummergold text-white font-semibold hover:bg-dummerbrown transition">Shop
+                        Now</a>
+                    <a href="#"
+                        class="rounded-lg px-6 py-3 border border-dummergold text-dummergold font-semibold hover:bg-dummergold hover:text-white transition">Learn
+                        More</a>
+                </div>
+            </div>
+            <div class="about-curve section-border ml-auto w-full max-w-md relative">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=600&q=80"
+                    alt="Flour Milling" class="w-full h-60 object-cover">
+            </div>
+        </section>
+
+        <!-- OUR BEST STAFF -->
+        <section class="max-w-7xl mx-auto px-4 py-10">
+            <div class="mb-10 text-center">
+                <div
+                    class="mb-2 px-4 py-1 inline-block rounded-full bg-dummergold/10 text-dummergold font-semibold text-sm">
+                    Meet Our Team</div>
+                <h2 class="text-2xl md:text-3xl font-serif font-extrabold mb-2">Our Best Millers</h2>
+                <p class="mb-6 text-dummerbrown/80 max-w-xl mx-auto">Meet our team of highly skilled, passionate
+                    professionals bringing the best to your table.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                <div class="glass rounded-2xl p-5 flex flex-col items-center shadow-card">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="John Dummer"
+                        class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-dummergold">
+                    <div class="text-lg font-bold font-serif">John Dummer</div>
+                    <div class="text-sm text-dummergold font-semibold">Founder & Master Miller</div>
+                    <div class="text-sm text-dummerbrown/70 mt-2">“Leading the team with a passion for tradition and
+                        innovation.”</div>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-5 flex flex-col items-center shadow-card">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Emily Carter"
+                        class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-dummergold">
+                    <div class="text-lg font-bold font-serif">Emily Carter</div>
+                    <div class="text-sm text-dummergold font-semibold">Head of Quality</div>
+                    <div class="text-sm text-dummerbrown/70 mt-2">“Ensuring only the best flour leaves our mill.”</div>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="glass rounded-2xl p-5 flex flex-col items-center shadow-card">
+                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="David Singh"
+                        class="w-28 h-28 object-cover rounded-full mb-4 border-4 border-dummergold">
+                    <div class="text-lg font-bold font-serif">David Singh</div>
+                    <div class="text-sm text-dummergold font-semibold">Production Manager</div>
+                    <div class="text-sm text-dummerbrown/70 mt-2">“Keeping the heart of our plant running at its best.”
+                    </div>
+                    <div class="flex gap-2 mt-2">
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="text-dummergold hover:text-dummerbrown"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-center mt-8">
+                <a href="#"
+                    class="px-8 py-3 rounded-lg bg-dummergold text-white font-semibold hover:bg-dummerbrown transition">View
+                    All Team</a>
+            </div>
+        </section>
+
+        <!-- BRANDS / PARTNERS -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <div class="text-center mb-10">
+                <span class="font-medium text-dummerbrown/60">Trusted by top bakeries, restaurants & food brands</span>
+            </div>
+            <div class="flex flex-wrap justify-center gap-10 items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Allied_Bakeries_logo.png"
+                    alt="Allied Bakeries" class="h-8 grayscale opacity-70">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Barilla_logo.png" alt="Barilla"
+                    class="h-8 grayscale opacity-70">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Bimbo_logo.svg" alt="Bimbo"
+                    class="h-8 grayscale opacity-70">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4c/General_Mills_logo.svg"
+                    alt="General Mills" class="h-8 grayscale opacity-70">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/2/2e/Grupo_Bimbo_logo.svg" alt="Grupo Bimbo"
+                    class="h-8 grayscale opacity-70">
+            </div>
+        </section>
+
+        <!-- FEATURES -->
+        <section class="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <div
+                    class="mb-2 px-4 py-1 inline-block rounded-full bg-dummergold/10 text-dummergold font-semibold text-sm">
+                    Features</div>
+                <h2 class="text-2xl md:text-3xl font-serif font-extrabold mb-3">Discover Our Feature-Packed Solutions
+                </h2>
+                <p class="text-dummerbrown/80 mb-6">Our mill offers a wide range of products and services that will
+                    revolutionize your baking and food business.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="glass rounded-xl p-5 border section-border flex flex-col items-start gap-3">
+                        <div class="icon-bg rounded-full p-2"><svg class="h-7 w-7 text-dummergold" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="10" />
+                                <path d="M12 16v-8M8 12h8" />
+                            </svg></div>
+                        <div>
+                            <div class="font-semibold">Custom Flour Blends</div>
+                            <div class="text-dummerbrown/80 text-sm">Specialty blends for every baking need, from
+                                gluten-free to ancient grains.</div>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 border section-border flex flex-col items-start gap-3">
+                        <div class="icon-bg rounded-full p-2"><svg class="h-7 w-7 text-dummergold" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <rect x="3" y="3" width="18" height="18" rx="2" />
+                                <path d="M3 9h18M9 21V9" />
+                            </svg></div>
+                        <div>
+                            <div class="font-semibold">Bulk & Retail Supply</div>
+                            <div class="text-dummerbrown/80 text-sm">Supplying homes, bakeries, and industries with
+                                flexible order options.</div>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 border section-border flex flex-col items-start gap-3">
+                        <div class="icon-bg rounded-full p-2"><svg class="h-7 w-7 text-dummergold" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+                                <path d="M9 12.5l2 2 4-4" />
+                            </svg></div>
+                        <div>
+                            <div class="font-semibold">Rigorous Quality Assurance</div>
+                            <div class="text-dummerbrown/80 text-sm">Every batch is tested and certified for purity and
+                                performance.</div>
+                        </div>
+                    </div>
+                    <div class="glass rounded-xl p-5 border section-border flex flex-col items-start gap-3">
+                        <div class="icon-bg rounded-full p-2"><svg class="h-7 w-7 text-dummergold" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <circle cx="12" cy="8" r="4" />
+                                <path d="M2 20v-2a4 4 0 0 1 4-4h12a4 4 0 0 1 4 4v2" />
+                            </svg></div>
+                        <div>
+                            <div class="font-semibold">Baking Consultation</div>
+                            <div class="text-dummerbrown/80 text-sm">Our experts help your business or home baking reach
+                                the next level.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <img src="https://images.unsplash.com/photo-1468787737698-f5c03f0570dd?q=80&w=600&auto=format&fit=crop"
+                alt="Milling Plant"
+                class="rounded-3xl shadow-xl border-2 border-dummerbeige max-h-96 w-full object-cover mt-40">
+        </section>
+
+        <!-- LOCATION -->
+        <section class="max-w-7xl mx-auto px-4 py-12">
+            <div class="mb-10 text-center">
+                <div
+                    class="mb-2 px-4 py-1 inline-block rounded-full bg-dummergold/10 text-dummergold font-semibold text-sm">
+                    Location</div>
+                <h2 class="text-2xl md:text-3xl font-serif font-extrabold mb-2">Find Us</h2>
+                <p class="text-dummerbrown/80 max-w-xl mx-auto">Visit our mill or one of our distributors near you for
+                    quality flour and expert advice.</p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-2xl shadow-lg border section-border p-7 flex flex-col gap-2">
+                    <img src="https://images.unsplash.com/photo-1468787737698-f5c03f0570dd?q=80&w=600&auto=format&fit=crop"
+                        alt="Manchester" class="w-full h-40 object-cover rounded-xl mb-3">
+                    <div class="font-bold">Faisalabad</div>
+                    <div class="text-dummerbrown/70 text-sm">Dummer flours</div>
+                    <a href="#" class="text-dummergold font-semibold mt-2 hover:underline">Visit Us</a>
+                </div>
+                <div class="bg-white rounded-2xl shadow-lg border section-border p-7 flex flex-col gap-2">
+                    <img src="https://images.unsplash.com/photo-1468787737698-f5c03f0570dd?q=80&w=600&auto=format&fit=crop"
+                        alt="Thornridge" class="w-full h-40 object-cover rounded-xl mb-3">
+                    <div class="font-bold">Faisalabad</div>
+                    <div class="text-dummerbrown/70 text-sm">Nishtabad</div>
+                    <a href="#" class="text-dummergold font-semibold mt-2 hover:underline">Visit Us</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="max-w-7xl mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-1">
+                <h2 class="text-2xl md:text-3xl font-serif font-extrabold mb-2">Consult now with our flour experts</h2>
+                <p class="text-dummerbrown/80 mb-5">Get tailored product advice, baking support, or custom blend
+                    recommendations. Our team is ready to help you succeed.</p>
+                <div class="flex gap-4">
+                    <a href="#"
+                        class="rounded-lg px-6 py-3 bg-dummergold text-white font-semibold hover:bg-dummerbrown transition">Book
+                        Now</a>
+                    <a href="#"
+                        class="rounded-lg px-6 py-3 border border-dummergold text-dummergold font-semibold hover:bg-dummergold hover:text-white transition">Learn
+                        More</a>
+                </div>
+            </div>
+            <div class="about-curve section-border w-full max-w-md relative">
+                <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
+                    alt="Consultation" class="w-full h-44 object-cover">
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-dummerbrown text-dummercream pt-12 pb-3">
+        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center mb-4">
+                    <img src="https://sukunajjk.github.io/Dummer-flour/images/wheat-plant.webp"
+                        alt="Dummer Flour Mills Logo" class="h-12 w-auto mr-3">
+                    <div class="flex flex-col">
+                        <span class="text-2xl font-bold tracking-wider leading-none">DUMMER</span>
+                        <span class="text-lg font-semibold text-dummergold tracking-wide leading-none">FLOUR
+                            MILLS</span>
+                    </div>
+                </div>
+                <p class="text-sm opacity-80">Premium quality flour producers since 1952. Delivering tradition and
+                    innovation in every bag.</p>
+            </div>
+            <div>
+                <h3 class="text-base font-bold mb-3">About Us</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="#" class="hover:text-dummergold transition">Contact</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">FAQ</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">Support</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">Blog</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">Services</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-base font-bold mb-3">Partners</h3>
+                <ul class="space-y-1 text-sm">
+                    <li><a href="#" class="hover:text-dummergold transition">Events</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">Careers</a></li>
+                    <li><a href="#" class="hover:text-dummergold transition">Press</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3 class="text-base font-bold mb-3">Stay Connected</h3>
+                <form class="flex mb-3">
+                    <input type="email" placeholder="Enter your email"
+                        class="rounded-l px-3 py-2 bg-white text-dummerbrown focus:outline-none" />
+                    <button
+                        class="rounded-r px-4 py-2 bg-dummergold text-white font-semibold hover:bg-dummerbrown transition">Submit</button>
+                </form>
+                <div class="flex gap-3 text-lg">
+                    <a href="#" class="hover:text-dummergold"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="hover:text-dummergold"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-dummergold"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="hover:text-dummergold"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto pt-6 border-t border-[#5a4a30] text-center text-xs opacity-70">
+            <p>&copy; 2025 Dummer Flour Mills. All rights reserved. | Privacy Policy | Terms of Service | Cookie Policy
             </p>
         </div>
-        <div class="absolute bottom-8 left-0 right-0 text-center animate-bounce">
-            <i class="fas fa-chevron-down text-amber-200 text-xl"></i>
-        </div>
-    </header>
-
-    <!-- Minimalist Navigation -->
-    <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur-md shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex justify-between items-center">
-                <a href="index.html" class="font-serif text-xl text-amber-900 flex items-center">
-                    <svg class="w-6 h-6 mr-2 fill-current" viewBox="0 0 100 100">
-                        <path d="M50,10 L70,30 L70,70 L50,90 L30,70 L30,30 Z M50,30 L60,40 L60,60 L50,70 L40,60 L40,40 Z"/>
-                    </svg>
-                    Dummer Flour Mills
-                </a>
-                <ul class="hidden md:flex space-x-8">
-                    <li><a href="index.html" class="text-amber-900 hover:text-amber-700 transition-colors">Home</a></li>
-                    <li><a href="about.html" class="text-amber-700 border-b border-amber-700">Heritage</a></li>
-                    <li><a href="products.html" class="text-amber-900 hover:text-amber-700 transition-colors">Collections</a></li>
-                    <li><a href="contact.html" class="text-amber-900 hover:text-amber-700 transition-colors">Contact</a></li>
-                </ul>
-                <button class="md:hidden text-amber-900">
-                    <i class="fas fa-bars text-xl"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Founder's Story -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
-                <div class="lg:w-1/2 relative">
-                    <div class="mill-diagram absolute inset-0 opacity-10"></div>
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1600187100203-29ff31e4020a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Original Dummer Mill" 
-                             class="w-full h-auto shadow-xl">
-                        <div class="absolute -bottom-6 -right-6 bg-amber-900 text-white p-4 font-serif text-lg">
-                            Est. 1950
-                        </div>
-                    </div>
-                </div>
-                <div class="lg:w-1/2">
-                    <h2 class="font-serif text-3xl md:text-4xl font-light text-amber-900 mb-6">The Dummer Legacy</h2>
-                    <div class="w-24 h-px bg-amber-700 mb-8"></div>
-                    <p class="text-gray-700 mb-6">
-                        In the spring of 1950, master miller Henry Dummer converted his grain storage barn into a small milling operation 
-                        with a singular vision: to produce the finest flour using traditional methods. What began as a modest enterprise 
-                        serving three local bakeries has grown into one of New England's most respected flour mills, while remaining true 
-                        to Henry's original commitment to quality.
-                    </p>
-                    <p class="text-gray-700">
-                        Today, under the leadership of Henry's grandson Richard, we continue to honor our heritage while innovating 
-                        to meet the needs of modern bakers and chefs. Our mill still stands on its original foundation, a testament 
-                        to the enduring value of craftsmanship.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Interactive Timeline -->
-    <section class="py-24 bg-amber-50 grain-pattern">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="font-serif text-3xl md:text-4xl font-light text-amber-900 mb-6">Seven Decades of Excellence</h2>
-                <div class="w-24 h-px bg-amber-700 mx-auto mb-8"></div>
-                <p class="max-w-2xl mx-auto text-gray-700">
-                    Our journey from a local mill to regional leader
-                </p>
-            </div>
-
-            <div class="relative timeline max-w-4xl mx-auto py-10">
-                <!-- 1950 -->
-                <div class="relative mb-20">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content ml-auto w-full md:w-5/12 bg-white p-8 shadow-md">
-                        <div class="flex items-center mb-4">
-                            <span class="font-serif text-amber-700 text-2xl mr-4">1950</span>
-                            <div class="w-16 h-px bg-amber-200"></div>
-                        </div>
-                        <h3 class="font-serif text-xl text-amber-900 mb-3">Founding of Dummer Flour Mills</h3>
-                        <p class="text-gray-600">
-                            Henry Dummer converts his grain barn into a milling operation with a single stone mill, serving local bakeries 
-                            in Coos County, New Hampshire.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 1968 -->
-                <div class="relative mb-20">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content mr-auto w-full md:w-5/12 bg-white p-8 shadow-md">
-                        <div class="flex items-center mb-4">
-                            <span class="font-serif text-amber-700 text-2xl mr-4">1968</span>
-                            <div class="w-16 h-px bg-amber-200"></div>
-                        </div>
-                        <h3 class="font-serif text-xl text-amber-900 mb-3">First Expansion</h3>
-                        <p class="text-gray-600">
-                            Added second stone mill and began supplying restaurants throughout New Hampshire and Vermont. Henry's son 
-                            William joins the business.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 1985 -->
-                <div class="relative mb-20">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content ml-auto w-full md:w-5/12 bg-white p-8 shadow-md">
-                        <div class="flex items-center mb-4">
-                            <span class="font-serif text-amber-700 text-2xl mr-4">1985</span>
-                            <div class="w-16 h-px bg-amber-200"></div>
-                        </div>
-                        <h3 class="font-serif text-xl text-amber-900 mb-3">Modernization Era</h3>
-                        <p class="text-gray-600">
-                            Installed state-of-the-art milling equipment while maintaining traditional quality standards. Began supplying 
-                            specialty food stores throughout New England.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- 2002 -->
-                <div class="relative mb-20">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content mr-auto w-full md:w-5/12 bg-white p-8 shadow-md">
-                        <div class="flex items-center mb-4">
-                            <span class="font-serif text-amber-700 text-2xl mr-4">2002</span>
-                            <div class="w-16 h-px bg-amber-200"></div>
-                        </div>
-                        <h3 class="font-serif text-xl text-amber-900 mb-3">Organic Certification</h3>
-                        <p class="text-gray-600">
-                            Became one of the first mills in the region to offer certified organic stone-ground flours. Richard Dummer 
-                            becomes CEO.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Present -->
-                <div class="relative">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content ml-auto w-full md:w-5/12 bg-white p-8 shadow-md">
-                        <div class="flex items-center mb-4">
-                            <span class="font-serif text-amber-700 text-2xl mr-4">Present</span>
-                            <div class="w-16 h-px bg-amber-200"></div>
-                        </div>
-                        <h3 class="font-serif text-xl text-amber-900 mb-3">Regional Leader</h3>
-                        <p class="text-gray-600">
-                            Now supplying premium flours to over 200 bakeries, restaurants, and retailers across New England while still 
-                            operating from our original location with the same commitment to quality.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Leadership Section -->
-    <section class="py-24 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="font-serif text-3xl md:text-4xl font-light text-amber-900 mb-6">Our Milling Masters</h2>
-                <div class="w-24 h-px bg-amber-700 mx-auto mb-8"></div>
-                <p class="max-w-2xl mx-auto text-gray-700">
-                    The passionate team upholding our traditions
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-                <!-- CEO -->
-                <div class="team-card relative group">
-                    <div class="overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Richard Dummer, CEO" 
-                             class="team-image w-full h-80 object-cover filter grayscale(20%) transition-all duration-500">
-                    </div>
-                    <div class="px-4">
-                        <h3 class="font-serif text-2xl text-amber-900 mb-1">Richard Dummer</h3>
-                        <p class="text-amber-700 mb-4">Chief Executive Officer</p>
-                        <p class="text-gray-600 mb-4">
-                            Grandson of founder Henry Dummer, Richard has expanded our operations while maintaining our commitment to 
-                            traditional milling practices.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 text-xs font-medium">
-                        Third Generation
-                    </div>
-                </div>
-
-                <!-- Production Manager -->
-                <div class="team-card relative group">
-                    <div class="overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Sarah Chen, Production Manager" 
-                             class="team-image w-full h-80 object-cover filter grayscale(20%) transition-all duration-500">
-                    </div>
-                    <div class="px-4">
-                        <h3 class="font-serif text-2xl text-amber-900 mb-1">Sarah Chen</h3>
-                        <p class="text-amber-700 mb-4">Production Manager</p>
-                        <p class="text-gray-600 mb-4">
-                            With 18 years at Dummer Mills, Sarah ensures every batch meets our exacting standards for quality and 
-                            consistency.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 text-xs font-medium">
-                        Since 2005
-                    </div>
-                </div>
-
-                <!-- Head Miller -->
-                <div class="team-card relative group">
-                    <div class="overflow-hidden mb-6">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d44eef8b37?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                             alt="Michael O'Connell, Head Miller" 
-                             class="team-image w-full h-80 object-cover filter grayscale(20%) transition-all duration-500">
-                    </div>
-                    <div class="px-4">
-                        <h3 class="font-serif text-2xl text-amber-900 mb-1">Michael O'Connell</h3>
-                        <p class="text-amber-700 mb-4">Master Miller</p>
-                        <p class="text-gray-600 mb-4">
-                            Third-generation miller who apprenticed under Richard's father. Michael oversees our stone grinding 
-                            operations with unparalleled expertise.
-                        </p>
-                        <div class="flex space-x-4">
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fab fa-linkedin-in"></i>
-                            </a>
-                            <a href="#" class="text-amber-900 hover:text-amber-700">
-                                <i class="fas fa-envelope"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="absolute top-4 right-4 bg-amber-900 text-white px-3 py-1 text-xs font-medium">
-                        Since 1992
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Milling Process -->
-    <section class="py-24 bg-amber-900 text-amber-50">
-        
-    </section>
-
-    <!-- CTA Section -->
-    <section class="py-24 bg-[url('https://images.unsplash.com/photo-1603569283847-aa295f0d016a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center bg-fixed">
-<div class="container mx-auto px-6">
-            <div class="text-center mb-20">
-                <h2 class="font-serif text-3xl md:text-4xl font-light mb-6">The Art of Milling</h2>
-                <div class="w-24 h-px bg-amber-200 mx-auto mb-8"></div>
-                <p class="max-w-2xl mx-auto">
-                    Our time-honored process for exceptional flour
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <div class="text-center p-8 bg-amber-800/30 rounded-lg">
-                    <div class="text-4xl text-amber-200 mb-6">
-                        <i class="fas fa-tractor"></i>
-                    </div>
-                    <h3 class="font-serif text-xl mb-3">Grain Selection</h3>
-                    <p>
-                        We partner with regional farms growing premium wheat varieties selected for flavor and milling quality.
-                    </p>
-                </div>
-
-                <div class="text-center p-8 bg-amber-800/30 rounded-lg">
-                    <div class="text-4xl text-amber-200 mb-6">
-                        <i class="fas fa-temperature-low"></i>
-                    </div>
-                    <h3 class="font-serif text-xl mb-3">Slow Milling</h3>
-                    <p>
-                        Our stone mills operate at low temperatures to preserve nutrients and delicate flavor compounds.
-                    </p>
-                </div>
-
-                <div class="text-center p-8 bg-amber-800/30 rounded-lg">
-                    <div class="text-4xl text-amber-200 mb-6">
-                        <i class="fas fa-microscope"></i>
-                    </div>
-                    <h3 class="font-serif text-xl mb-3">Quality Control</h3>
-                    <p>
-                        Every batch is tested for protein content, absorption rate, and baking performance.
-                    </p>
-                </div>
-
-                <div class="text-center p-8 bg-amber-800/30 rounded-lg">
-                    <div class="text-4xl text-amber-200 mb-6">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3 class="font-serif text-xl mb-3">Careful Packaging</h3>
-                    <p>
-                        Freshly milled flour is packaged in craft paper bags that protect quality while being sustainable.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Professional Footer -->
-    <footer class="bg-amber-950 text-amber-100 pt-20 pb-10">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-16">
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-50">Dummer Flour Mills</h3>
-                    <p class="mb-4">
-                        123 Mill Street<br>
-                        Dummer, NH 03588
-                    </p>
-                    <p>
-                        (603) 555-0199<br>
-                        info@dummerflourmills.com
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-50">Hours</h3>
-                    <p>
-                        Monday-Friday: 8am-5pm<br>
-                        Saturday: 9am-3pm<br>
-                        Sunday: Closed
-                    </p>
-                </div>
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-50">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="#" class="hover:text-amber-300 transition-colors">Recipes</a></li>
-                        <li><a href="#" class="hover:text-amber-300 transition-colors">Baking Guides</a></li>
-                        <li><a href="#" class="hover:text-amber-300 transition-colors">Wholesale</a></li>
-                        <li><a href="#" class="hover:text-amber-300 transition-colors">Sustainability</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="font-serif text-xl mb-6 text-amber-50">Connect</h3>
-                    <div class="flex space-x-4">
-                        <a href="#" class="w-10 h-10 rounded-full border border-amber-200/30 hover:border-amber-300 hover:text-amber-300 flex items-center justify-center transition-colors">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-amber-200/30 hover:border-amber-300 hover:text-amber-300 flex items-center justify-center transition-colors">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-amber-200/30 hover:border-amber-300 hover:text-amber-300 flex items-center justify-center transition-colors">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <div class="border-t border-amber-800 pt-8 text-center text-sm text-amber-200/70">
-                <p>&copy; 2023 Dummer Flour Mills. All rights reserved.</p>
-            </div>
-        </div>
     </footer>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </body>
+
 </html>
